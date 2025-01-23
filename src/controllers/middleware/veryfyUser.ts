@@ -1,7 +1,9 @@
 import express from "express"
 class verifyUser{
     constructor(){}
-    veryfyUser(req:express.Request,res:express.Response,next:express.NextFunction):void{
-       let user=req.session.user
+    userverfy(req:express.Request,res:express.Response,next:express.NextFunction):void{
+       if(req.session.user) next();
+       else  res.render("/")
     }
 }
+export default verifyUser

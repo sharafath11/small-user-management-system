@@ -8,12 +8,18 @@ import  dotenv from "dotenv"
 dotenv.config()
 const app = express();
 // const key:string=process.env.SESSION_KEY
-app.use(session({
-  secret:process.env.SESSION_KEY,
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: true } 
-}));
+app.use(
+  session({
+    secret: process.env.SESSION_KEY || "default-secret",
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: process.env.NODE_ENV === "production" },
+  })
+);
+
+
+
+
 
 mongoose
   .connect('mongodb://localhost:27017/week17')

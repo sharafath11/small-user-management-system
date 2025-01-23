@@ -115,7 +115,10 @@
       try {
         const response = await axios.post('/login', { email, password });
         if (response.data.ok) {
-          showToast(response.data.msg)
+          showToast("Registration successful!", 'success');
+         setTimeout(() => {
+        window.location.href = "/home"; 
+       }, 1000);
         }
         else {
             showToast(response.data.msg)
