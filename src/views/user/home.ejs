@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+    }
+
+    h1 {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeInScale 2s ease-in-out forwards;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      color: #fff;
+      background-color: #ff5c5c;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #e64444;
+    }
+
+    @keyframes fadeInScale {
+      0% {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome, Your Name</h1>
+  <form action="/logout" method="POST">
+    <button type="submit">Logout</button>
+  </form>
+</body>
+</html>

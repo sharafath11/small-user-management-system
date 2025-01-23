@@ -1,0 +1,30 @@
+# Node modules
+node_modules/
+
+# TypeScript compiled files
+dist/
+build/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Environment files
+.env
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# VSCode settings
+.vscode/
+
+# Dependency directories
+jspm_packages/
+
+# TypeScript Source Map files
+*.tsbuildinfo
+
+# IDE configuration files
+.idea/
