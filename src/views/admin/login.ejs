@@ -8,7 +8,7 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <style>
     body {
-      background: linear-gradient(to right, #4e73df, #1cc88a);
+      background: linear-gradient(to right, #7882a0, #152e25);
       height: 100vh;
       display: flex;
       align-items: center;
@@ -86,7 +86,7 @@
 </head>
 <body>
   <div class="login-container">
-    <h2>Login</h2>
+    <h2> Admin Login</h2>
     <form id="loginForm">
       <div class="mb-3">
         <label for="email" class="form-label">Email</label>
@@ -101,7 +101,6 @@
       <button type="submit" class="btn btn-primary">Login</button>
     </form>
     <div id="error-message">Invalid credentials. Please try again.</div>
-    <button class="register-btn" id="register-btn">Register</button>
   </div>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
@@ -109,15 +108,15 @@
     document.getElementById('loginForm').addEventListener('submit', async function(e) {
       e.preventDefault();
 
-      const email = document.getElementById('email').value;
+      const name = document.getElementById('email').value;
       const password = document.getElementById('password').value;
       
       try {
-        const response = await axios.post('/login', { email, password });
+        const response = await axios.post('admin/login', { name, password });
         if (response.data.ok) {
           showToast(response.data.msg);
-         setTimeout(() => {
-        window.location.href = "/home"; 
+          setTimeout(() => {
+          window.location.href = "admin/dashboard"; 
        }, 1000);
         }
         else {

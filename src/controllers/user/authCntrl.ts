@@ -15,10 +15,13 @@ declare module "express-session" {
     user: {
       id: string;
       email: string;
-      username:string
+      username:string;
+      admin:boolean
     };
+    
   }
 }
+
 
 class UserAuth {
   private sendResponse(res: express.Response, ok: boolean, msg: string, data: any = null) {
@@ -42,7 +45,7 @@ class UserAuth {
         return this.sendResponse(res, false, "Invalid email or password.");
       }
       console.log(user)
-      req.session.user = { id: user.id, email: user.email,username:user.username };
+      req.session.user = { id: user.id, email: user.email,username:user.username,admin:false };
       this.sendResponse(res, true, "Login successful!");
     } catch (error) {
       this.sendResponse(res, false, "Server error.");
@@ -74,6 +77,11 @@ class UserAuth {
     }
   }
   logout(req: express.Request, res: express.Response): void {
+    if(req.session.user?.admin){
+      req.session.user={admin:true,email:'',id:'',username:''}
+      res.redirect("/")
+    }
+   else{
     req.session.destroy((err) => {
       if (err) {
         console.error("Error destroying session:", err);
@@ -81,6 +89,7 @@ class UserAuth {
       }
       res.redirect("/")
     });
+   }
   }
   
 }
